@@ -12,11 +12,11 @@ import OdometerHistory from "../components/OdometerHistory";
 
 export default function Dashboard() {
     const [data, setData] = useState({
-        rpm: 4500,
+        rpm: 0,
         speed: 0,
-        throttle: 50,
+        throttle: 0,
         gear: 0,
-        brake: 100,
+        brake: 0,
         engineCoolantTemp: 0,
         airIntakeTemp: 0,
         odoMeter: 0,
@@ -24,14 +24,11 @@ export default function Dashboard() {
     });
 
     useEffect(() => {
-        // Get initial data
         const initialData = getLatestData();
         setData(prevData => ({
             ...prevData,
             ...initialData
         }));
-
-        // setData(initialData);
 
         // Subscribe to real-time updates
         const unsubscribe = subscribeToData((mqttData) => {
@@ -82,7 +79,6 @@ export default function Dashboard() {
     return (
         <div className="min-h-screen bg-[#e6e6e6]">
             <div className="flex justify-center p-10 w-full h-[60%] flex-wrap font-7segment">
-                {/* TODO: ganti nama mobil sesuai data vehicle */}
                 <h1 className="text-5xl font-extrabold mb-8 w-full text-center font-7segment text-black">HONDA BR-V (2017)</h1>
                 <div className="w-full h-full flex justify-center gap-6">
                     <VerticalBar name="Throttle" value={data.throttle} color="#00A551" width={80} onClick={() => handleMetricClick("throttle")} />
@@ -110,7 +106,6 @@ export default function Dashboard() {
                 {selectedMetric && (
                     <div className="w-full mt-10 bg-white p-6 rounded-xl shadow-xl">
                         {selectedMetric === "odoMeter" ? (
-                            /* TODO: bikin selection vehicleId, ini masih hardcode */ 
                             <OdometerHistory vehicleId="ESP32" />
                         ) : (
                             <MetricChart metric={selectedMetric} />
