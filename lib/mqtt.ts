@@ -1,7 +1,7 @@
 import mqtt from "mqtt";
 
 // === MQTT Connection Configuration ===
-const client = mqtt.connect("ws://localhost:9001", {
+const client = mqtt.connect("wss://mqtt.mpiskawe.my.id", {
   username: "WebMonitor",
   password: "WebMonitor",
 });
