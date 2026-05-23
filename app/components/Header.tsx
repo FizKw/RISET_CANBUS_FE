@@ -50,7 +50,7 @@ export default function Header() {
                         Home
                     </Link>
 
-                    <Link href="/upload" className={linkStyles} onClick={() => setIsOpen(false)}>
+                    {/* <Link href="/upload" className={linkStyles} onClick={() => setIsOpen(false)}>
                         Upload Config
                     </Link>
 
@@ -70,7 +70,7 @@ export default function Header() {
                         <option value="car1">Car 1</option>
                         <option value="car2">Car 2</option>
                         <option value="car3">Car 3</option>
-                    </select>
+                    </select> */}
                 </nav>
             </div>
         </header>
